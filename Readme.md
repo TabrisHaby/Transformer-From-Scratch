@@ -151,4 +151,5 @@ $FFN(x) = max(0, xW_1+b_1)W_2+b_2$
 - sub_mask : mask in decoding processing
 
 $trg sub mask = torch.tril(torch.ones(trg len, trg len)).type(torch.Bytetensor).to(self.device)$
-$trg_mask = trg_pad_mask & trg_sub_mask$
+
+$trg mask = trg pad mask & trg sub mask$
