@@ -44,7 +44,7 @@ When doing Embedding, usually we use super on torch.nn.Embedding module, there a
 - embedding_dim: dimention of output (always named as "d_model")
 - padding_idx = None: if i need to make length of all output same
 
-![Source](https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html)
+[Source](https://pytorch.org/docs/stable/generated/torch.nn.Embedding.html)
 
 ![Embedding_dim](/pic/embedding_dim.png)
 
@@ -91,11 +91,11 @@ process: input vector(d_model) -> Linear transformation(torch.nn.Linear) -> q_1;
 
 - supposet seq_length = 9, then we have 9 score: $score_{11}, ..., score_{19}$, we want to know the importance of each score z(character), we use softmax method to calculate weight for each score(character).
 
-![attention](\pic\attention.png)
+![attention](/pic/attention.png)
 
-![formula with example](\pic\formula_with_example.png)
+![formula with example](/pic/formula_with_example.png)
 
-![score and softmax](\pic\score_and_softmax.png)
+![score and softmax](/pic/score_and_softmax.png)
 
 After getting the Softmax matrix, we do a matrix multiple with V matrix to get output as $dim(output) = (pos, dim_v)$
 
@@ -104,9 +104,9 @@ After getting the Softmax matrix, we do a matrix multiple with V matrix to get o
 
 We obtain the Scaled Dot-Product Attention for a character. When we apply this to all characters, we achieve multi-layer attention, like this:
 
-![multi head](\pic\multi_head.png)
+![multi head](/pic/multi_head.png)
 
-![dim of multi head](\pic\multi_head_dim.png)
+![dim of multi head](/pic/multi_head_dim.png)
 
 Multi-Head Attention projects the same sentence into different dimensional spaces using various linear transformations. This allows the model to learn the similarities between different characters from different perspectives, enhancing the model's performance.
 
@@ -128,7 +128,7 @@ For multi-Head, dim of all layers are as below:
 
 - The norm step involves layer normalization. This is one of several computational techniques that facilitate easier model training, improving performance and reducing training time.
 
-![Add & Norm](\pic\Add_Norm.png)
+![Add & Norm](/pic/Add_Norm.png)
 
 ### Formula
 
@@ -150,5 +150,5 @@ $FFN(x) = max(0, xW_1+b_1)W_2+b_2$
 - pad_mask : mask in padding processing
 - sub_mask : mask in decoding processing
 
-$trg_sub_mask = torch.tril(torch.ones(trg_len, trg,len)).type(torch.Bytetensor).to(self.device)$
+$trg sub mask = torch.tril(torch.ones(trg len, trg len)).type(torch.Bytetensor).to(self.device)$
 $trg_mask = trg_pad_mask & trg_sub_mask$
