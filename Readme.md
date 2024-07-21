@@ -145,11 +145,7 @@ $FFN(x) = max(0, xW_1+b_1)W_2+b_2$
 
 ## Mask
 
-- This masking, combined with the fact that the output embeddings are offset by one position, ensures that the predictions for position 𝑖 depend only on the known outputs at positions less than 𝑖. This means the model doesn't need to know the output after 𝑖 + 2.
+This masking, combined with the fact that the output embeddings are offset by one position, ensures that the predictions for position 𝑖 depend only on the known outputs at positions less than 𝑖. This means the model doesn't need to know the output after 𝑖 + 2.
 
 - pad_mask : mask in padding processing
 - sub_mask : mask in decoding processing
-
-$trg sub mask = torch.tril(torch.ones(trg len, trg len)).type(torch.Bytetensor).to(self.device)$
-
-$trg mask = trg pad mask & trg sub mask$
